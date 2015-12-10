@@ -94,6 +94,10 @@ public class Hexadecimal implements Comparable{
 	} 
     }
 
+    public int getValue(){
+	return _decNum;
+    }
+
     /*=============================================
       boolean equals(Object) -- tells whether 2 Objs are equivalent
       pre:  other is an instance of class Hexadecimal
@@ -117,17 +121,30 @@ public class Hexadecimal implements Comparable{
       =============================================*/
     public int compareTo( Object other ) {
 	if(other instanceof Hexadecimal){
-	    if(this._decNum < ((Hexadecimal)other)._decNum){
+	    if(this._decNum < ((Hexadecimal)other).getValue()){
 		return -1;
-	    } else if(this._decNum > ((Hexadecimal)other)._decNum){
+	    } else if(this._decNum > ((Hexadecimal)other).getValue()){
 		return 1;
 	    } else{
 		return 0;
 	    }
 	}
-	else{
-	    throw new ClassCastException("\ncompareTo() input not Hexadecimal");
+	if(other instanceof Binary){
+	    if(this._decNum < ((Binary)other).getValue()){
+		return -1;
+	    } else if(this._decNum > ((Binary)other).getValue()){
+		return 1;
+	    } else{
+		return 0;
+	    }
 	}
+	if(other instanceof Rational){
+	    ((Rational)other).compareTo(this);
+	}
+	else{
+	    throw new ClassCastException("\ncompareTo() input not Comparable");
+	}	
+	return -2;
     }
 
 

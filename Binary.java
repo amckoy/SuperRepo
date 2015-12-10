@@ -139,6 +139,9 @@ public class Binary implements Comparable{
 	} 
     }
 
+    public int getValue(){
+	return _decNum;
+    }	
 
     /*=============================================
       boolean equals(Object) -- tells whether 2 Objs are equivalent
@@ -163,18 +166,31 @@ public class Binary implements Comparable{
       =============================================*/
     public int compareTo( Object other ) {
 	if(other instanceof Binary){
-	    if(this._decNum < ((Binary)other)._decNum){
+	    if(this._decNum < ((Binary)other).getValue()){
 		return -1;
-	    } else if(this._decNum > ((Binary)other)._decNum){
+	    } else if(this._decNum > ((Binary)other).getValue()){
 		return 1;
 	    } else{
 		return 0;
 	    }
 	}
-	else{
-	    throw new ClassCastException("\ncompareTo() input not Binary");
+	if(other instanceof Hexadecimal){
+	    if(this._decNum < ((Hexadecimal)other).getValue()){
+		return -1;
+	    } else if(this._decNum > ((Hexadecimal)other).getValue()){
+		return 1;
+	    } else{
+		return 0;
+	    }
 	}
-    }
+	if(other instanceof Rational){
+	    ((Rational)other).compareTo(this);
+        }
+	else{
+	    throw new ClassCastException("\ncompareTo() input not Comparable");
+	}
+	return -2;
+    }	
 
 
     //main method for testing

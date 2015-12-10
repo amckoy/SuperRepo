@@ -97,7 +97,7 @@ public class Rational implements Comparable{
 	denominator /= gcd;
     }
     public int compareTo(Object O){
-	if(O instanceof Rational)
+	if(O instanceof Rational){
 	    if (this.numerator * ((Rational)O).denominator > this.denominator * ((Rational)O).numerator){
 		return 1;
 	    }
@@ -107,9 +107,19 @@ public class Rational implements Comparable{
 	    else{
 		return 0;
 	    }
-	else{
-	    throw new ClassCastException("\ncompareTo() input not Rational");
 	}
+	else if(O instanceof Binary){
+	    Rational binNumber = new Rational(((Binary)O).getValue(), 1);
+	    compareTo(binNumber);
+	}
+	else if(O instanceof Hexadecimal){
+	    Rational hexNumber = new Rational(((Hexadecimal)O).getValue(), 1);
+	    compareTo(hexNumber);
+	}
+	else{
+	    throw new ClassCastException("\ncompareTo() input not Comparable");
+	}
+	return -2;
     }
     
     public boolean equals(Object x){
