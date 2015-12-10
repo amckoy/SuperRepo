@@ -1,7 +1,7 @@
-//Illogicians with a Hint of Rationality - Adam McKoy, Ruochong Wu
+//Adam McKoy
 //APCS1 pd10
-//HW41 -- In America, the Driver Sits on the Left
-//2015-12-04
+//HW45 -- Come Together
+//2015-12-10
 
 public class Rational implements Comparable{
 
@@ -107,13 +107,18 @@ public class Rational implements Comparable{
 	    else{
 		return 0;
 	    }
-	else return -2;
+	else{
+	    throw new ClassCastException("\ncompareTo() input not Rational");
+	}
     }
     
     public boolean equals(Object x){
-	if(x instanceof Rational)
+	if(x instanceof Rational){
 	    return this.compareTo((Rational)x) == 0;
-	else return false;
+	}
+	else{ 
+	    throw new ClassCastException("\nequals() input not Rational");
+	}
     }
     public static void main(String[] args){
 	Rational george = new Rational();

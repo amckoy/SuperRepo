@@ -1,9 +1,9 @@
 /* Adam McKoy
    APCS1 pd10
-   HW44 -- This or That or Fourteen Other Things
-   2015-12-09 */
+   HW45 -- Come Together
+   2015-12-10 */
 
-public class Hexadecimal {
+public class Hexadecimal implements Comparable{
 
     private int _decNum;
     private String _hexNum;
@@ -104,7 +104,7 @@ public class Hexadecimal {
 	if(other instanceof Hexadecimal){
 	    return this == other || compareTo(other) == 0;
 	} else{
-	    return false;
+	    throw new ClassCastException("\nequals() input not Hexadecimal");
 	}
     }
 
@@ -126,7 +126,7 @@ public class Hexadecimal {
 	    }
 	}
 	else{
-	    return -2;
+	    throw new ClassCastException("\ncompareTo() input not Hexadecimal");
 	}
     }
 

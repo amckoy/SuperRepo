@@ -1,9 +1,9 @@
 /* Adam McKoy
    APCS1 pd10
-   HW43 -- This or That
-   2015-12-08 */
+   HW45 -- Come Together
+   2015-12-10 */
 
-public class Binary {
+public class Binary implements Comparable{
 
     private int _decNum;
     private String _binNum;
@@ -150,7 +150,7 @@ public class Binary {
 	if(other instanceof Binary){
 	    return this == other || compareTo(other) == 0;
 	} else{
-	    return false;
+	    throw new ClassCastException("\nequals() input not Binary");
 	}
     }
 
@@ -172,7 +172,7 @@ public class Binary {
 	    }
 	}
 	else{
-	    return -2;
+	    throw new ClassCastException("\ncompareTo() input not Binary");
 	}
     }
 
@@ -186,6 +186,7 @@ public class Binary {
 	Binary b2 = new Binary(5);
 	Binary b3 = b1;
 	Binary b4 = new Binary(7);
+	int lol = 21;
 
 	System.out.println( b1 );
 	System.out.println( b2 );
@@ -202,6 +203,7 @@ public class Binary {
 	System.out.println( b3.equals(b1) ); //should be true
 	System.out.println( b4.equals(b2) ); //should be false
 	System.out.println( b1.equals(b4) ); //should be false
+	System.out.println( b2.equals(lol));
 
 	System.out.println( "\n.compareTo..." );
 	System.out.println( b1.compareTo(b2) ); //should be 0
