@@ -110,16 +110,15 @@ public class Rational implements Comparable{
 	}
 	else if(O instanceof Binary){
 	    Rational binNumber = new Rational(((Binary)O).getValue(), 1);
-	    compareTo(binNumber);
+	    return compareTo(binNumber);
 	}
 	else if(O instanceof Hexadecimal){
 	    Rational hexNumber = new Rational(((Hexadecimal)O).getValue(), 1);
-	    compareTo(hexNumber);
+	    return compareTo(hexNumber);
 	}
 	else{
 	    throw new ClassCastException("\ncompareTo() input not Comparable");
 	}
-	return -2;
     }
     
     public boolean equals(Object x){

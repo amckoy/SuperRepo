@@ -118,18 +118,36 @@ public class SuperArray{
     }
 
     public boolean isSorted(){
-	for(int i = 0; i < _size - 1; i++){
-	    if(_data[i].compareTo(_data[i+1]) > 0){
-		return false;
+	boolean answer = true;
+	for(int i = 0; i < _size - 2; i++){
+	    if(_data[i].compareTo(_data[i+1]) >= 0){
+		answer = false;
 	    }
 	}
-	return true;
+	return answer;
     }
 
     //main method for testing
-    public static void main( String[] args ) 
-    {
-	   
+    public static void main( String[] args ){
+	SuperArray first = new SuperArray();
+	Binary b1 = new Binary("10101"); //21
+	Hexadecimal h2 = new Hexadecimal("2A"); //42
+	Rational r3 = new Rational(11,4); //2.75
+	first.add(b1);
+	first.add(h2);
+	first.add(r3);
+	System.out.println(first);
+	System.out.println(b1.compareTo(h2));
+	System.out.println(b1.compareTo(r3));
+	System.out.println(h2.compareTo(r3));
+	System.out.println(first.linSearch(b1));
+	System.out.println(first.isSorted());
+	SuperArray second = new SuperArray();
+	second.add(r3);
+	second.add(b1);
+	second.add(h2);
+	System.out.println(second.linSearch(h2));
+	System.out.println(second.isSorted());
     }//end main
 		
 }//end class

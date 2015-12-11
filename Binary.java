@@ -184,12 +184,11 @@ public class Binary implements Comparable{
 	    }
 	}
 	if(other instanceof Rational){
-	    ((Rational)other).compareTo(this);
+	    return ((Rational)other).compareTo(this) * -1;
         }
 	else{
 	    throw new ClassCastException("\ncompareTo() input not Comparable");
 	}
-	return -2;
     }	
 
 
